@@ -47,7 +47,7 @@ public class EncodeMain extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		setTitle("左耳渗透工具集");
 		JTabbedPane tabbedPane=new JTabbedPane();
 		tabbedPane.setSize(1000, 550);
 		//  ImageIcon icon=createImageIcon("tab.jp1g");
