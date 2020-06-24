@@ -1,0 +1,1 @@
+find / -type f -name '*.php' | xargs egrep -l "专用网马｜提权|phpspy|后门|udf.dll|ZIP压缩程序 荒野无灯修改版|eval\(@$_POST|eval\(@$_GET|assert\(@$_POST|Root_CSS\(\)|黑狼PHP木马|eval\(gzuncompress\(base64_decode|PHP木马|disk_total_space|wscript.shell|cmd.exe|shell.application|documents and settings|system32|serv-u" |sort -n|uniq -c |sort -rn |awk '{print $2}'

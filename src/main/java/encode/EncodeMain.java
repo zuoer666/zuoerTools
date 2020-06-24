@@ -4,11 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
+
+import main.ZuoerToolsMain;
+
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -17,31 +22,31 @@ public class EncodeMain extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					EncodeMain frame = new EncodeMain();
-					//frame.add(new TabbedPaneDemo(),BorderLayout.CENTER);
-					//frame.pack();
-					frame.setLocationRelativeTo(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
 	public EncodeMain() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosed(WindowEvent e) {
+				ZuoerToolsMain.recoverLocation();	
+				ZuoerToolsMain.encodeFrame=null;
+			}
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			/* (non-Javadoc)
+			 * @see java.awt.event.WindowAdapter#windowClosing(java.awt.event.WindowEvent)
+			 */
+			@Override
+			public void windowClosing(WindowEvent e) {
+				// TODO Auto-generated method stub
+				ZuoerToolsMain.recoverLocation();
+				ZuoerToolsMain.encodeFrame=null;
+			}
+			
+		});
+		
 		setSize(1000, 570);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -63,7 +68,7 @@ public class EncodeMain extends JFrame {
 		tabbedPane.addTab("Html编码",null,panel3,"");
 		tabbedPane.setMnemonicAt(2,KeyEvent.VK_F3);
 		contentPane.add(tabbedPane);
-
+		setResizable(false);
 		
 
 	}
